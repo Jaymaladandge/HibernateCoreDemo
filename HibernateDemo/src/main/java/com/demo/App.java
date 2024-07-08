@@ -4,9 +4,11 @@ import java.util.Date;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.entity.Address;
+import com.entity.Certificate;
 import com.entity.Student;
 
 /**
@@ -22,19 +24,49 @@ public class App {
 		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 		SessionFactory sessionFactory = cfg.buildSessionFactory();
 		
-		Student student = new Student(101, "vijay", "mumbai");
+		Certificate certificate = new Certificate("Java", "3 months");
+		
+		Student student = new Student(105, "kiran", "pune",certificate);
 		Address address = new Address("mumbai", "maharashtra", true, 9, new Date(), null);
 		
-		Session session = sessionFactory.getCurrentSession();
 		
+		
+		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 		
 		session.save(student);
-		session.save(address);
+		//session.save(address);
 		
 		session.getTransaction().commit();
 		
+		
+		
+		
+		System.out.println("--------------------------session.get()-------------------------------");
+		
+		session = sessionFactory.openSession();
+		
+		Student student2 = session.get(Student.class, 101); 	//query fired for this object	
+		Student student3 = session.get(Student.class, 101); 	//this object will get from cache
+		
+		Student student4 = session.get(Student.class, 115);		//returns null if no entity present in DB
+		System.out.println("Student : "+student4);
+		
+		
+		System.out.println("------------------------session.load()------------------------");
+		
+		Student student5 = session.load(Student.class, 101);	
+		System.out.println("Student : "+student5);				//when we invoked method on instance object load from cache
+																//otherwise from DB. Lazy loading.
+		Student student6 = session.load(Student.class, 102);	
+		System.out.println("Student : "+student6);				//hit the DB 
+		
+		
+		//Student student7 = session.load(Student.class, 200);
+		//System.out.println(student7);							//throws ObjectNotFoundException while entity is not present in DB
+		
 		session.close();
+		sessionFactory.close();
 	}
 }
 
@@ -57,6 +89,21 @@ one session per request in web applications too.
   as it is faster in performance as compared to creating a new session each time. 
  -need to add following property to hibernate.cfg.xml to use getCurrentSession method
   <property name="hibernate.current_session_context_class">thread</property> 
+  
+  
+  sesion.flush(); 
+  Hibernate needs an active transaction for operations that modify the state of the session, including flush.
+  session.flush() forces the session to synchronize its state with the database.
+  
+  
+  
+  get() VS load()
+  
+  get() : get object from cache if not in cache hit the DB. returns null if no entity present in DB.
+  load() : get object from cache if not in cache hit the DB. throws ObjectNotFoundException if entity is not present in DB.
+  		   lazy loading - return proxy and when we use object then it hit DB. 
+ 
+  
   
   
   

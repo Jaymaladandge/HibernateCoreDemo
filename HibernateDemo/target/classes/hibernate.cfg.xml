@@ -12,7 +12,7 @@
 		<property name="connection.username">root</property>
 		<property name="connection.password">Root@123</property>
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
-		<property name="hbm2ddl.auto">create</property> <!-- default value in none -->
+		<property name="hbm2ddl.auto">update</property> <!-- default value in none -->
 		<property name="show_sql">true</property>
 		
 		 <property name="hibernate.current_session_context_class">thread</property> 
@@ -22,6 +22,8 @@
 		
 		<mapping class="com.entity.Student"/>
 		<mapping class="com.entity.Address"/>
+		<mapping class="com.entity.Question"/>
+		<mapping class="com.entity.Answer"/>
 		
 		
 	</session-factory>
