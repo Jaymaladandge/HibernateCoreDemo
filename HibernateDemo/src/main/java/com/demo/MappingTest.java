@@ -40,8 +40,16 @@ public class MappingTest {
 		 * session.save(question2); session.save(answer2);
 		 */
 		
-		
 		tx.commit();
+		
+		System.out.println("\n------------------------Fetch data---------------------------");
+		
+		Question question2 = session.load(Question.class, 1);
+		System.out.println(question2.getQuestion());
+		System.out.println(question2.getAnswer().getAnswer());
+		
+		
+		
 		session.close();
 		sessionFactory.close();
 	}

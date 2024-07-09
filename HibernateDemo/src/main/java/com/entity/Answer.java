@@ -17,8 +17,8 @@ public class Answer {
 
 	private String ans;
 
-	//@OneToOne(mappedBy = "answer")   This is for bi-directional mapping. with mappedBy = "answer" property we are telling to 
-	//private Question question;		not generate foreign key within answer table, refer foreign key from question table from answer column
+	//@OneToOne   //This is for bi-directional mapping. with mappedBy = "answer" property we are telling to 
+	//private Question question;	//	not generate foreign key within answer table, refer foreign key from question table from answer column
 
 	public Answer() {
 		super();
@@ -55,15 +55,16 @@ public class Answer {
 		this.ansId = ansId;
 	}
 
+	
 	/*
 	 * public Question getQuestion() { return question; }
 	 * 
 	 * public void setQuestion(Question question) { this.question = question; }
-	 */
-
-	/*
+	 * 
+	 * 
+	 * 
 	 * @Override public String toString() { return "Answer [ansId=" + ansId +
-	 * ", answer=" + answer + ", question=" + question + "]"; }
+	 * ", answer=" + ans + ", question=" + question + "]"; }
 	 */
 
 }
