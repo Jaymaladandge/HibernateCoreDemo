@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class User {
 	
 	private String userName;
 	
-	@OneToMany(mappedBy = "user")		//If we dont use it one extra table for foreign key column will be created
+	@OneToMany(fetch = FetchType.EAGER ,mappedBy = "user")		//If we dont use mappedBy one extra table for foreign key column will be created
 	private List<Post> posts;
 
 	public User() {

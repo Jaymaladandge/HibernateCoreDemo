@@ -50,3 +50,22 @@ public class Employee {
 	}
 
 }
+
+
+/*
+  
+  
+  GenerationType.IDENTITY: This strategy relies on the auto-increment functionality provided by the database to 
+  generate unique identifier values automatically.
+  
+  GenerationType.AUTO: This strategy lets the JPA provider choose the most appropriate strategy based on the underlying database and configuration. 
+  It typically maps to either IDENTITY or SEQUENCE, depending on database capabilities.
+  
+  
+ */
+
+
+
+
+
+
