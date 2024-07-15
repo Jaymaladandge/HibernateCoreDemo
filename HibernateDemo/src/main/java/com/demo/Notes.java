@@ -15,8 +15,9 @@ the value of mappedBy is the name of the association-mapping attribute on the ow
 owning side only not in inverse side.
 
 
+----------HQL-----------
 
-java.lang.IllegalStateException: org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing: com.entity.Project
+Database independent. use entity name instead of table name.
 
 
 	  

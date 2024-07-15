@@ -55,6 +55,11 @@ public class Answer {
 		this.ansId = ansId;
 	}
 
+	@Override
+	public String toString() {
+		return "Answer [ansId=" + ansId + ", ans=" + ans + "]";
+	}
+
 	
 	/*
 	 * public Question getQuestion() { return question; }
@@ -67,4 +72,5 @@ public class Answer {
 	 * ", answer=" + ans + ", question=" + question + "]"; }
 	 */
 
+	
 }
