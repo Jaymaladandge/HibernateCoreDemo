@@ -18,7 +18,7 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "stud_address")
 public class Address {
-
+ 
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

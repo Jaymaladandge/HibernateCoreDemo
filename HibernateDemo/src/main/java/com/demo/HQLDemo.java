@@ -15,7 +15,7 @@ import com.entity.User;
 
 public class HQLDemo {
 
-	//used javax.persistence.Query;
+	//used javax.persistence.Query; 
 	
 	public static void main(String[] args) {
 

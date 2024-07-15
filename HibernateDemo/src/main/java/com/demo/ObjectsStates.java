@@ -9,7 +9,7 @@ import com.entity.Certificate;
 import com.entity.Student;
 
 public class ObjectsStates {
-	
+	 
 	public static void main(String[] args) {
 		
 		Configuration config = new Configuration().configure("hibernate.cfg.xml");

@@ -9,9 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.NativeQuery;
 
-import com.entity.Answer;
-
-public class ExecuteSQLQueries {
+public class ExecuteSQLQueries { 
 
 	public static void main(String[] args) {
 

@@ -17,7 +17,7 @@ owning side only not in inverse side.
 
 ----------HQL-----------
 
-Database independent. use entity name instead of table name.
+Database independent. use entity name instead of table name. 
 
 
 	  

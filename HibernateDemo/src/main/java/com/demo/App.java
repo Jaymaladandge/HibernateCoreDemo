@@ -96,7 +96,7 @@ one session per request in web applications too.
   session.flush() forces the session to synchronize its state with the database.
   
   
-  
+   
   get() VS load()
   
   get() : get object from cache if not in cache hit the DB. returns null if no entity present in DB.

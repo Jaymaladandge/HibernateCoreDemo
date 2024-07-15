@@ -60,7 +60,7 @@ public class Answer {
 		return "Answer [ansId=" + ansId + ", ans=" + ans + "]";
 	}
 
-	
+	 
 	/*
 	 * public Question getQuestion() { return question; }
 	 * 

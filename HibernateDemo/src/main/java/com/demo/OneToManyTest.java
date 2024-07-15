@@ -35,7 +35,7 @@ public class OneToManyTest {
 		Post post3 = new Post();
 		post3.setPost("pictures");
 		post3.setUser(user);
-
+ 
 		List<Post> posts = new ArrayList<Post>();
 		posts.add(post);
 		posts.add(post2);

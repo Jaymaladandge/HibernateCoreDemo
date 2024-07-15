@@ -18,7 +18,7 @@ public class MappingTest {
 		Question question = new Question();
 		question.setQuestion("what is Java ?");
 		question.setAnswer(answer);
-
+ 
 		
 		/*
 		 * Question question2 =new Question();

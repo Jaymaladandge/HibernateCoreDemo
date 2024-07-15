@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Employee {
-
+ 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "emp_id")

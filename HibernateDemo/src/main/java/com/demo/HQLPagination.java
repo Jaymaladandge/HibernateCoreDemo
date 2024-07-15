@@ -24,7 +24,7 @@ public class HQLPagination {
 		Query<Answer> query = session.createQuery("from Answer", Answer.class);
 		query.setFirstResult(0);
 		query.setMaxResults(5);
-		
+		 
 		
 		List<Answer> answers = query.getResultList();
 		answers.forEach(a->System.out.println(a));

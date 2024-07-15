@@ -12,7 +12,7 @@ import com.entity.Employee;
 import com.entity.Project;
 
 public class ManyToManyTest {
-
+ 
 	public static void main(String[] args) {
 
 		Configuration config = new Configuration().configure("hibernate.cfg.xml");
