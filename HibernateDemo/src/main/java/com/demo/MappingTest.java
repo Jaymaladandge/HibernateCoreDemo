@@ -13,10 +13,10 @@ public class MappingTest {
 	public static void main(String[] args) {
 
 		Answer answer = new Answer();
-		answer.setAnswer("Java is programing language");
+		answer.setAnswer("Swing used for GUI");
 
 		Question question = new Question();
-		question.setQuestion("what is Java ?");
+		question.setQuestion("what is Swing ?");
 		question.setAnswer(answer);
  
 		
@@ -34,11 +34,14 @@ public class MappingTest {
 
 		Transaction tx = session.beginTransaction();
 
-		session.save(answer);
+		//session.save(answer);  			//need to save answer explicitly while we not use cascading on parent Question
 		session.save(question);
+		
 		/*
 		 * session.save(question2); session.save(answer2);
 		 */
+		
+		
 		
 		tx.commit();
 		

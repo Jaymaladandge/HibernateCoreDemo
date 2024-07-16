@@ -19,7 +19,7 @@ public class Project {
 	
 	private String projectName;
 	
-	@ManyToMany(mappedBy = "projects")    //It will not create separate table of foreign keys, will refer table created by "projects" field 
+	@ManyToMany(mappedBy = "projects")    //It will not create separate table of foreign keys, will refer table created by "projects" field of Employee 
 	private List<Employee> emps;
 	
 	
