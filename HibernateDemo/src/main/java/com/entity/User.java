@@ -21,7 +21,7 @@ public class User {
 	
 	private String userName;
 	
-	@OneToMany(fetch = FetchType.EAGER ,mappedBy = "user")		//If we dont use mappedBy one extra table for foreign key column will be created
+	@OneToMany(fetch = FetchType.EAGER ,mappedBy = "user", orphanRemoval = true)		//If we dont use mappedBy one extra table for foreign key column will be created
 	private List<Post> posts;
 
 	public User() {

@@ -56,7 +56,7 @@ public class OneToManyTest {
 
 		System.out.println("----------------------Fetch data--------------------------");
 
-		User user2 = session.get(User.class, 1); //Here while we are fetching User object, query will be fired for Post object too
+		User user2 = session.load(User.class, 1); //Here while we are fetching User object, query will be fired for Post object too
 												//because we have used FetchType.EAGER on posts in User class @OneToMany mapping	
 
 		System.out.println(user2.getUserName());

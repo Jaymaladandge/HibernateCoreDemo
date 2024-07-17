@@ -15,9 +15,12 @@
 		<property name="hbm2ddl.auto">update</property> <!-- default value in none -->
 		<property name="show_sql">true</property>
 		
-		 <property name="hibernate.current_session_context_class">thread</property> 
+		<property name="hibernate.current_session_context_class">thread</property> 
 		<!--this property is for sessionFactory.getCurrentSession(); no need for openSession();
 		-->
+		
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
 		
 		
 		<mapping class="com.entity.Student"/>

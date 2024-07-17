@@ -34,7 +34,7 @@ public class MappingTest {
 
 		Transaction tx = session.beginTransaction();
 
-		//session.save(answer);  			//need to save answer explicitly while we not use cascading on parent Question
+		//session.save(answer);  			//need to save answer explicitly when we not use cascading on parent Question
 		session.save(question);
 		
 		/*

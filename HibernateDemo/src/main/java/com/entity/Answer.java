@@ -31,14 +31,6 @@ public class Answer {
 		this.ans = answer;
 	}
 
-	public int getId() {
-		return ansId;
-	}
-
-	public void setId(int id) {
-		this.ansId = id;
-	}
-
 	public String getAnswer() {
 		return ans;
 	}

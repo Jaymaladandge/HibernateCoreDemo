@@ -34,7 +34,7 @@ public class App {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 		
-		session.save(student);
+		//session.save(student);
 		//session.save(address);
 		
 		session.getTransaction().commit();
@@ -56,10 +56,10 @@ public class App {
 		System.out.println("------------------------session.load()------------------------");
 		
 		Student student5 = session.load(Student.class, 101);	
-		System.out.println("Student : "+student5);				//when we invoked method on instance object load from cache
+		System.out.println("Student : "+student5);				//when we invoked method on instance, object load from cache
 																//otherwise from DB. Lazy loading.
 		Student student6 = session.load(Student.class, 102);	
-		System.out.println("Student : "+student6);				//hit the DB 
+		System.out.println("Student : "+student6);				//when we use object, hibernate hits the DB 
 		
 		
 		//Student student7 = session.load(Student.class, 200);

@@ -1,7 +1,68 @@
 package com.demo;
 
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.entity.Answer;
+import com.entity.Post;
+import com.entity.Question;
+import com.entity.User;
+
 public class Cascading {
 
+	public static void main(String[] args) {
+		
+		Configuration config = new Configuration().configure("hibernate.cfg.xml");
+		SessionFactory factory = config.buildSessionFactory();
+		Session session = factory.openSession();
+		
+		Transaction tx = session.beginTransaction();
+		
+		
+		Answer answer = new Answer();
+		answer.setAnswer("use to develope server side applications");
+		
+		Question question = new Question();
+		question.setQuestion("What is Spring");
+		question.setAnswer(answer);
+		
+		
+		 //session.save(question);							//no need to save answer because we use cascading
+		  Question question2 = session.get(Question.class, 3);
+		//session.delete(question2);							//we delete question related child entity deleted automatically
+		
+		
+		if(question2 != null) {
+			question2.getAnswer().setAnswer("java component");  
+			question2.setQuestion("What is swings");
+			session.update(question2);
+		}else {
+			System.out.println("===============No entity in database with given id================");
+		}
+		
+		
+		System.out.println("----------------------------------------------------------------------");
+		
+		
+		User user = session.get(User.class, 1);
+		List<Post> posts = user.getPosts();
+		
+		posts.stream().filter(post -> post.getPost().equals("song")).findFirst().ifPresent(p -> posts.remove(p)); //here we remove song post from list of posts hence user not referring to song post entity so now hibernate will delete it from database automatically because we use "orphanRemoval = true" in User class 
+		
+		
+		session.flush();
+		tx.commit();
+		session.close();
+		factory.close();
+		
+	}
+	
+	
+	
 }
 
 
@@ -80,7 +141,7 @@ CascadeType.SAVE_UPDATE
  will be deleted which might be associated with other employees. resulting in a massive entity deletion.
  
  
- 
+ To prevent StaleObjectStateException in Hibernate, 2 separate threads trying to update the same entities at the same time.
  
  
  */
