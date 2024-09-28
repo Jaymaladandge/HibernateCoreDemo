@@ -51,7 +51,9 @@ public class Cascading {
 		User user = session.get(User.class, 1);
 		List<Post> posts = user.getPosts();
 		
-		posts.stream().filter(post -> post.getPost().equals("song")).findFirst().ifPresent(p -> posts.remove(p)); //here we remove song post from list of posts hence user not referring to song post entity so now hibernate will delete it from database automatically because we use "orphanRemoval = true" in User class 
+		posts.stream().filter(post -> post.getPost().equals("song")).findFirst().ifPresent(p -> posts.remove(p)); //here we remove song post 
+													//from list of posts hence user not referring to song post entity so now hibernate 
+													//will delete it from database automatically because we use "orphanRemoval = true" in User class 
 		
 		
 		session.flush();
@@ -74,6 +76,16 @@ public class Cascading {
  Cascading in Hibernate refers to the automatic persistence of related entities. When a change is made to an entity, 
  such as an update or deletion, the changes can be cascaded to related entities as well.
  Cascading can be configured using annotations, such as @OneToMany(cascade = CascadeType.ALL), or through XML configuration files.
+ 
+ 
+ If you delete the parent entity, the child entities will be automatically deleted because of the cascading effect.
+ However, if you delete the child entity directly, it will not affect the parent entity. Hibernate will simply delete 
+ the child entity without touching the parent.
+ 
+ If you want to maintain bidirectional cascading (deleting a child affects the parent), you would need to manage that manually in your 
+ application logic, as Hibernate doesn't automatically cascade deletions upwards from child to parent.
+ 
+ 
  
 CascadeType.ALL
 CascadeType.PERSIST
@@ -127,11 +139,20 @@ CascadeType.SAVE_UPDATE
  
  
  
+ 
  @OneToMany(orphanRemoval = true, mappedBy = "employee")
  private Set<AccountEntity> accounts;
  It essentially means that whenever I will remove an ‘account from accounts set’ (which means I am removing the relationship 
  between that account and Employee); the account entity which is not associated with any other Employee on the database 
  (i.e. orphan) should also be deleted.
+ 
+ 
+Cascading Delete (CascadeType.REMOVE) vs. orphanRemoval = true
+CascadeType.REMOVE: This only applies when the parent entity itself is deleted. When you delete the parent, the child entities will be 
+automatically deleted if CascadeType.REMOVE is set. However, it doesn’t handle cases where you simply remove the child from the parent's 
+collection — that’s where orphanRemoval comes into play.
+ 
+ 
  
  
  
@@ -141,7 +162,18 @@ CascadeType.SAVE_UPDATE
  will be deleted which might be associated with other employees. resulting in a massive entity deletion.
  
  
- To prevent StaleObjectStateException in Hibernate, 2 separate threads trying to update the same entities at the same time.
+ 
+update(): Reattaches an existing, detached entity to the session. It assumes the entity already exists in the database. 
+If the entity is new or its corresponding row doesn't exist, it will throw an error.
+merge(): Merges the state of a detached entity with the session or database. It can handle both detached and new entities. 
+If the entity doesn’t exist, it inserts a new row. It returns a managed entity (the original object remains detached
+When we say "the original object remains detached" with merge(), it means the object you pass to the merge() method is not reattached 
+to the session. Instead, Hibernate creates and returns a new instance of the entity that is now managed (attached) to the session. 
+The original object you provided remains detached—meaning it isn't tracked by the session anymore.).
+ 
+
+ 
+To prevent StaleObjectStateException in Hibernate, 2 separate threads trying to update the same entities at the same time.
  
  
  */

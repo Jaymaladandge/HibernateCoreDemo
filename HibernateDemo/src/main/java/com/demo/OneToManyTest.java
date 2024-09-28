@@ -71,5 +71,37 @@ public class OneToManyTest {
 }
 
 
+/* 
+User user2 = session.load(User.class, 1); 
+In your User class, you have specified **fetch = FetchType.EAGER** for the posts field in the @OneToMany relationship.
+This means that as soon as the User entity is loaded from the database, the associated list of Post entities will be fetched eagerly 
+Hibernate may use a JOIN query to fetch both Or, it may first load the User, and then immediately run a separate query.
+ 
+ FetchType.LAZY is not the default for all relationships in Hibernate.
+
+For @ManyToOne and @OneToOne relationships, the default is FetchType.EAGER.
+For @OneToMany and @ManyToMany relationships, the default is FetchType.LAZY.
+
+ 
+For collections (e.g., a List, Set, etc.), such as those found in @OneToMany or @ManyToMany relationships, Hibernate will by default use 
+lazy loading. This means the related collection data will only be fetched from the database when you explicitly access it in the code. 
+ 
+ 
+*/
+
+
+
 //By default FetchType.LAZY is used. when we fetch User object query will be fired only for User object not for contained Post object
 //when we will use contained Post object means we perform operation on Post object query will be fired. 
+
+
+
+
+
+
+
+
+
+
+
+

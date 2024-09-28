@@ -20,6 +20,53 @@ owning side only not in inverse side.
 Database independent. use entity name instead of table name. 
 
 
+
+
+Bidirectional Mapping:
+
+Definition: In bidirectional mapping, both sides of the relationship are aware of each other.
+Foreign Key:
+If you define a @ManyToOne relationship in the Post entity (along with @JoinColumn), a foreign key column (e.g., user_id) will be created 
+in the Post table that references the primary key of the User table.
+This establishes a direct relationship in the database, allowing you to easily join the two tables and maintain referential integrity.
+
+
+Unidirectional Mapping:
+Definition: In unidirectional mapping, only one side of the relationship has knowledge of the other side.
+Foreign Key:
+If you have a @OneToMany relationship (e.g., User has many Post), but the Post entity does not have a reference back to the User 
+(meaning no @ManyToOne and @JoinColumn), no foreign key will be created in the Post table.
+As a result, the Post table will be independent of the User table, and there won’t be any direct linkage between the two at the database level.
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  hr@clover
+	  hr.helpdesk@
+	 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	  
 	  
 */}

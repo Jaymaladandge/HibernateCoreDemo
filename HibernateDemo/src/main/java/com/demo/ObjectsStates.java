@@ -38,7 +38,7 @@ public class ObjectsStates {
 		
 		factory.close();
 		
-		//When call delete() student will be in Removed state
+		//When call session.delete() student will be in Removed state
 	}
 
 }

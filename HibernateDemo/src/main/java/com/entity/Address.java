@@ -139,3 +139,26 @@ public class Address {
 	
 	
 }
+
+
+/*
+
+ The @Temporal annotation in Hibernate is used to specify the precision of date and time values when mapping a Java java.util.Date or java.util.Calendar 
+ field to a database column. This annotation helps Hibernate determine whether the date should include just the date, the date with time, 
+ or the time with fractional seconds when persisting the entity to the database.
+ 
+ 
+ As of Java 8, it's recommended to use java.time.LocalDate, java.time.LocalTime, and java.time.LocalDateTime instead of java.util.Date or java.util.Calendar, 
+ as they provide better clarity and precision without the need for @Temporal.
+ 
+ 
+*/
+
+
+
+
+
+
+
+
+

@@ -68,3 +68,8 @@ public class Question {
 	}
 
 }
+
+
+//Two tables will be created one is Question and other is Answer. 
+//In a @OneToOne relationship, whether it is unidirectional or bidirectional, only two tables are created.
+

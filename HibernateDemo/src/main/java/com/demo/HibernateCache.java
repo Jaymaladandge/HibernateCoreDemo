@@ -49,6 +49,32 @@ public class HibernateCache {
   
   
  
+Session 1: The first time you load Student with ID 101, Hibernate will query the database, fetch the entity, and store it in the second-level 
+ cache because of the @Cacheable annotation and the specified caching strategy (READ_ONLY).
+Session 2: The second time you attempt to load the same Student entity (with ID 101), Hibernate will retrieve the entity from the second-level 
+ cache rather than querying the database again. This demonstrates the benefit of caching: reduced database hits and faster access to frequently 
+used data.
+
+The READ_ONLY strategy means that the entity will only be read from the cache and will not be modified, making this suitable for 
+data that doesn't change frequently. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   */
 
 

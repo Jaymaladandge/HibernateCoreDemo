@@ -18,7 +18,7 @@ public class Answer {
 	private String ans;
 
 	//@OneToOne   //This is for bi-directional mapping. with mappedBy = "answer" property we are telling to 
-	//private Question question;	//	not generate foreign key within answer table, refer foreign key from question table from answer column
+	//private Question question;	//	not generate foreign key within answer table, refer foreign key from answer column of question table 
 
 	public Answer() {
 		super();

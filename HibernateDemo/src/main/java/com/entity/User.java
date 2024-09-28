@@ -69,3 +69,17 @@ public class User {
 	
 	
 }
+
+
+//In your scenario with the User and Post entities, two tables will be created
+
+
+
+
+
+
+
+
+
+
+

@@ -50,3 +50,40 @@ public class Project {
 	
 	
 }
+
+
+
+/*
+ 
+ If you do not use the @ManyToMany(mappedBy = "projects") annotation in the Project class, JPA will treat the relationship as two separate 
+ one-to-many relationships instead of a many-to-many relationship. In this scenario, it would create an additional join table for the 
+ relationship.
+ tables : 1]Employee, 
+ 2]Project, 
+ 3]emp_project_info : emp_id (Foreign Key referencing Employee)
+ proj_id (Foreign Key referencing Project), 
+ 4]project_employee : (assuming JPA interprets it as a separate relationship. proj_id (Foreign Key referencing Project)
+ emp_id (Foreign Key referencing Employee))  
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  */
+
+
+
+
+
+
+
+
+

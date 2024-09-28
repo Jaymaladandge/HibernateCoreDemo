@@ -16,7 +16,7 @@ public class Post {
 	
 	private String post;
 	
-	@ManyToOne
+	@ManyToOne							//here both @ManyToOne and @JoinColumn ensures bidirectional mapping
 	@JoinColumn(name = "user_id")
 	private User user;
 

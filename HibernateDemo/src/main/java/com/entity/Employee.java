@@ -62,6 +62,14 @@ public class Employee {
   It typically maps to either IDENTITY or SEQUENCE, depending on database capabilities.
   
   
+  In total, three tables will be created: Employee , Project , emp_project_info.
+  
+Owning Side: Employee (where you defined the @JoinTable)
+Inverse Side: Project (where you use mappedBy)
+  
+  
+  
+  
  */
 
 
